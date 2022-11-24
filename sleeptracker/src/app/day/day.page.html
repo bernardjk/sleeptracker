@@ -14,11 +14,11 @@
   </ion-header>
 
   <div id="sleepiness">
-    <div>
+    <div id="left">
       <h2>How sleepy are you?</h2>
     </div>
     <div class="">
-      <ion-range class="sleepiness" [(ngModel)]="position" min="1" max="7" step="1" snaps="true" ticks="true" pin="true" color="secondary">
+      <ion-range class="sleepiness" [(ngModel)]="position" min="1" max="7" step="1" snaps="true" ticks="true" pin="true" color="warning">
         <ion-label slot="start">1</ion-label>
         <ion-label slot="end">7</ion-label>
       </ion-range>
@@ -35,6 +35,6 @@
   </ion-item>
 
   <div id="button">
-    <ion-button color="secondary" expand="block" (click)="logSleepiness()">Log Sleepiness</ion-button>
+    <ion-button color="warning" expand="block" (click)="logSleepiness()">Log Sleepiness</ion-button>
   </div>
 </ion-content>

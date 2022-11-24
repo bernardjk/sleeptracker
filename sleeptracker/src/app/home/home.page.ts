@@ -6,6 +6,8 @@ import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
 import { ModalController } from '@ionic/angular';
 import { AddmodalComponent } from '../addmodal/addmodal.component';
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -23,7 +25,7 @@ export class HomePage {
 	}
 
 	ngOnInit() {
-		console.log(this.allSleepData);
+		// console.log(this.allSleepData);
 	}
 
 	/* Ionic doesn't allow bindings to static variables, so this getter can be used instead. */
@@ -40,7 +42,6 @@ export class HomePage {
 			this.sleepEnd = new Date();
 			let sleep = new OvernightSleepData(this.sleepStart,this.sleepEnd);
 			this.sleepService.logOvernightData(sleep);
-			console.log(this.allSleepData);
 		}
 	}
 	async openModal() {
@@ -56,8 +57,6 @@ export class HomePage {
 				this.sleepEnd = new Date(data.data.edate);
 				let sleep = new OvernightSleepData(this.sleepStart,this.sleepEnd);
 				this.sleepService.logOvernightData(sleep);
-				console.log(sleep.summaryString());
-				console.log(this.allSleepData);
 				// console.log(data.data.sdate);
 				// console.log(data.data.edate);
 			}

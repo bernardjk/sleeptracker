@@ -10,6 +10,13 @@ export class OvernightSleepData extends SleepData {
 		this.sleepEnd = sleepEnd;
 	}
 
+	set(objectModel:{}){
+		this.id = objectModel['id'];
+		this.loggedAt = new Date(objectModel['loggedAt']);
+		this.sleepStart = new Date(objectModel['sleepStart']);
+		this.sleepEnd =  new Date(objectModel['sleepEnd']);
+	}
+
 	summaryString():string {
 		var sleepStart_ms = this.sleepStart.getTime();
 		var sleepEnd_ms = this.sleepEnd.getTime();

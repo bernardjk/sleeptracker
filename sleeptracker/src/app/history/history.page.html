@@ -17,15 +17,15 @@
   <ion-grid class="grid">
     <ion-row>
       <ion-col class= "col" col-6 size = "6">
-        <ion-button expand="block" [(ngModel)]="sleepiness">Day</ion-button>
+        <ion-button expand="block"  (click)="showDay()" color="warning">Day</ion-button>
       </ion-col>
       <ion-col class= "col" col-6 size = "6">
-          <ion-button expand="block" [(ngModel)]="overnight">Night</ion-button>
+          <ion-button expand="block"  (click)="showNight()" color="secondary">Night</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ion-content class="night" *ngIf="overnight" (click)="showNight()">
+  <ion-content id="bottom" class="night" *ngIf="dayornight == false">
     <ion-list>
       <ion-card *ngFor="let sleep of allOvernightData; let index" color = "secondary">
         <ion-card-header>
@@ -38,18 +38,21 @@
         </ion-card-content>
       </ion-card>
     </ion-list>
-      <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+      <!-- <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
         <ion-infinite-scroll-content>
         </ion-infinite-scroll-content>
-      </ion-infinite-scroll>
+      </ion-infinite-scroll> -->
   </ion-content>
 
-  <ion-content class="sleepiness" *ngIf="sleepiness" (click)="showDay()">
+  <ion-content id="bottom" class="sleepiness" *ngIf="dayornight == true" >
     <ion-list>
       <ion-card *ngFor="let sleepiness of allSleepinessData; let index" color = "warning">
         <ion-card-header>
           <ion-card-subtitle>{{sleepiness.titleString}}</ion-card-subtitle>
           <ion-card-title>{{sleepiness.summaryString()}}</ion-card-title>
+          <ion-card-content>
+           {{sleepiness.getnote()}}
+          </ion-card-content>
         </ion-card-header>
   
         <ion-card-content>
@@ -57,10 +60,10 @@
         </ion-card-content>
       </ion-card>
     </ion-list>
-      <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+      <!-- <ion-infinite-scroll>
         <ion-infinite-scroll-content>
         </ion-infinite-scroll-content>
-      </ion-infinite-scroll>
+      </ion-infinite-scroll> -->
   </ion-content>
 
 </ion-content>
